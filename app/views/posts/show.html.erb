@@ -9,6 +9,10 @@
     </small>
   </section>
   <section class="post-summary">
-    <%= @post.summary %>
+   <%= @post.summary %>
   </section>
+  <section>      
+    <%= image_tag @post.image.url(:large), class: 'image-show' if @post.image?%>
+    <%= @post.body %>
+  </section>        
 </article>
