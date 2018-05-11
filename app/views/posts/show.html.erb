@@ -13,6 +13,6 @@
   </section>
   <section>      
     <%= image_tag @post.image.url(:large), class: 'image-show' if @post.image?%>
-    <%= @post.body %>
+    <%= @post.body.html_safe %>
   </section>        
 </article>
