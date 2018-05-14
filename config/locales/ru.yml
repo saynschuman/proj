@@ -2,6 +2,9 @@ ru:
   common:
     errors: 'При заполнении формы возникли следующие ошибки:'
     back: 'Назад'
+  will_paginate:
+    previous_label: 'Пред'
+    next_label: 'След'
   posts:
     index:
       title: 'Статьи'
