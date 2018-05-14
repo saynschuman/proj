@@ -24,6 +24,10 @@
     <%= f.trix_editor :body, class: 'editor' %> 
   </div>
   <div class="form-group">
+    <%= f.label :category_id%>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { include_blan: true }, class: 'form-control' %> 
+  </div>
+  <div class="form-group">
     <%= f.label :all_tags%>
     <%= f.text_field :all_tags, class: 'form-control' %> 
   </div>
