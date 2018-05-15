@@ -5,25 +5,27 @@
 </div>
 
 <section id="categories">
-        <table class="table">
-                <thead>
-                        <tr>
-                                <th>#</th>
-                                <th>Название категории</th>
-                                <th></th>
-                        </tr>
-                </thead>
-                <tbody>
-                  <% @categories.each_with_index do |category, index| %>
-                    <tr>
-                            <td><%= index + 1 %></td>
-                            <td><%= category.name %></td>
-                            <td>
-                              <%= link_to 'Изменить', edit_category_path(category), class: 'btn btn-outline-primary btn-sm' %>
-                              <%= link_to 'Удалить', edit_category_path(category), method: :delete, data: [confirm: 'Уврены?'], class: 'btn btn-outline-danger btn-sm' %>
-                            </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-        </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Название категории</th>
+        <th>Категория родителя</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @categories.each_with_index do |category, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+          <td><%= category.name %></td>
+          <td><%= category.parent.name if category.parent.present? %></td>
+        <td>
+          <%= link_to 'Изменить', edit_category_path(category), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'Удалить', edit_category_path(category), method: :delete, data: [confirm: 'Уврены?'], class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+     <% end %>
+    </tbody>
+  </table>
 </section>
