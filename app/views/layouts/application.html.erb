@@ -12,16 +12,17 @@
   <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="<%= posts_path %>">Все статьи</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
-        </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(posts_path) %>">
+              <a class="nav-link" href="<%= root_path %>">Все статьи</a>
+            </li>
+            <% Category.order(:name).roots.each do |category| %>
+              <li class="nav-item <%= 'active' if current_page?(category_path(category)) %>">
+                <%= link_to category.name, category, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
         <%= link_to 'Новая статья', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>
       </div>
     </nav>
@@ -43,9 +44,14 @@
         <%= yield %>
       </div>
       <div class="col-md-3">
-        <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+        <%= render 'shared/submenu' %>
+
+        <div class="tag_cloud">        
+          <h2>Теги</h2>
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
           <%= link_to tag.name, tag_path(tag.name), class: css_class %>
         <% end  %>
+        </div>
       </div>
     </div>
   </div>

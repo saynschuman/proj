@@ -1,6 +1,7 @@
-<h1><%= t('.title')%></h1>
+<%= render 'shared/breadcrumb', category: @category %>
+<h1><%= @category.name %></h1>
 
-<section id='posts'>
+<section id="posts">
   <%= render @posts %>
 </section>
 
