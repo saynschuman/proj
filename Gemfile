@@ -22,6 +22,9 @@ gem 'uglifier', '>= 1.3.0'
 
 # gem 'mini_racer', platforms: :ruby
 
+#device
+gem 'devise'
+
 #ancestry
 gem 'ancestry'
 
