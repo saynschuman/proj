@@ -21,6 +21,9 @@ gem 'uglifier', '>= 1.3.0'
 
 # gem 'mini_racer', platforms: :ruby
 
+#ancestry
+gem 'ancestry'
+
 ## Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.1.0'
 
