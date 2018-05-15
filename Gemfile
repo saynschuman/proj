@@ -10,6 +10,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
+gem 'pg', '~> 0.18'
 #jquery
 gem 'jquery-rails'
 
