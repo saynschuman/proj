@@ -11,9 +11,9 @@
       <% end  %>
       |
       <% if user_signed_in? %>
-      <%= link_to 'Изменить', edit_post_path(@post) %>
+      <%= link_to 'Изменить', edit_admin_post_path(@post) %>
       |
-      <%= link_to 'Удалить', post_path(@post), method: :delete, data: {confirm: 'Вы уверенны?'} %>
+      <%= link_to 'Удалить', admin_post_path(@post), method: :delete, data: {confirm: 'Вы уверенны?'} %>
     <% end %>
     </small>
   </section>

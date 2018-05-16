@@ -1,12 +1,8 @@
-class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: :show
+class Admin::CategoriesController < Admin::AdminController
+  before_action :set_category, only: [:edit, :update, :destroy]
+
   def index
     @categories = Category.all
-  end
-
-  def show
-    @posts = Post.where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 3)
   end
 
   def new
@@ -17,7 +13,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, success: 'Категория успешно создана'
+      redirect_to admin_categories_path, success: 'Категория успешно создана'
     else
       @categories = Category.all.order(:name)
       flash[:danger] = 'Категория не создана'
@@ -31,7 +27,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to categories_path, success: 'Категория успешно обновлена'
+      redirect_to admin_categories_path, success: 'Категория успешно обновлена'
     else
       @categories = Category.where("id != #{@category.id}").order(:name)
       flash[:danger] = 'Категория не обновлена'

@@ -41,7 +41,7 @@
       form.append('Content-Type', file.type);
       form.append('picture[image]', file);
       xhr = new XMLHttpRequest;
-      xhr.open('POST', '/pictures', true);
+      xhr.open('POST', '/admin/pictures', true);
       xhr.upload.onprogress = function(event) {
         var progress;
         progress = void 0;
@@ -62,7 +62,7 @@
     deleteFile = function(n) {
       return $.ajax({
         type: 'DELETE',
-        url: 'pictures/' + n.attachment.attributes.values.picture_id,
+        url: '/admin/pictures/' + n.attachment.attributes.values.picture_id,
         cache: false,
         contentType: false,
         processData: false
